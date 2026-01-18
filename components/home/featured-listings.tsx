@@ -5,36 +5,7 @@ import { MapPin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
-const properties = [
-    {
-        id: 1,
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200",
-        address: "127 Vineyard Lane",
-        location: "Napa Valley, CA",
-        price: "$8,500,000",
-    },
-    {
-        id: 2,
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200",
-        address: "45 Mountain Ridge Drive",
-        location: "Aspen, CO",
-        price: "$12,000,000",
-    },
-    {
-        id: 3,
-        image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200",
-        address: "888 Pacific Coast Highway",
-        location: "Malibu, CA",
-        price: "$15,500,000",
-    },
-    {
-        id: 4,
-        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200",
-        address: "234 Ocean Boulevard",
-        location: "Miami, FL",
-        price: "$6,200,000",
-    },
-]
+import { properties } from "@/lib/data"
 
 export function FeaturedListings() {
     return (
@@ -52,7 +23,7 @@ export function FeaturedListings() {
 
                 {/* Property Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {properties.map((property, i) => (
+                    {properties.slice(0, 4).map((property, i) => (
                         <motion.div
                             key={property.id}
                             initial={{ opacity: 0, y: 40 }}
@@ -64,7 +35,7 @@ export function FeaturedListings() {
                                 {/* Image */}
                                 <div className="relative aspect-[4/3] overflow-hidden mb-6">
                                     <Image
-                                        src={property.image}
+                                        src={property.images[0]}
                                         alt={property.address}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"

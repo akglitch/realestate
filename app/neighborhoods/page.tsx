@@ -2,50 +2,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import Image from "next/image"
 
-const neighborhoods = [
-    {
-        name: "Napa Valley",
-        state: "California",
-        description: "World-renowned wine country with rolling vineyards and elegant estates",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1200",
-        properties: "48 properties",
-    },
-    {
-        name: "Aspen",
-        state: "Colorado",
-        description: "Prestigious mountain resort town featuring luxury ski-in/ski-out properties",
-        image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?q=80&w=1200",
-        properties: "32 properties",
-    },
-    {
-        name: "Malibu",
-        state: "California",
-        description: "Exclusive beachfront community with stunning Pacific Ocean views",
-        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200",
-        properties: "56 properties",
-    },
-    {
-        name: "Miami Beach",
-        state: "Florida",
-        description: "Vibrant coastal paradise with modern luxury high-rises and waterfront living",
-        image: "https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?q=80&w=1200",
-        properties: "64 properties",
-    },
-    {
-        name: "San Francisco",
-        state: "California",
-        description: "Iconic city living with Victorian architecture and bay views",
-        image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200",
-        properties: "72 properties",
-    },
-    {
-        name: "Scottsdale",
-        state: "Arizona",
-        description: "Desert luxury with championship golf courses and resort-style living",
-        image: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?q=80&w=1200",
-        properties: "41 properties",
-    },
-]
+import { neighborhoods } from "@/lib/data"
 
 export default function NeighborhoodsPage() {
     return (

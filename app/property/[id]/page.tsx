@@ -4,37 +4,23 @@ import { Button } from "@/components/ui/button"
 import { MapPin, Bed, Bath, Maximize2, Calendar, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { properties } from "@/lib/data"
+import { notFound } from "next/navigation"
 
-// This would normally come from a database or API
-const property = {
-    id: 1,
-    address: "127 Vineyard Lane",
-    location: "Napa Valley, CA",
-    price: "$8,500,000",
-    beds: 5,
-    baths: 6,
-    sqft: "7,500",
-    yearBuilt: "2019",
-    lotSize: "2.5 acres",
-    description: "Nestled among rolling vineyards, this exquisite estate exemplifies wine country luxury. Featuring custom finishes throughout, a gourmet chef's kitchen, and floor-to-ceiling windows that showcase breathtaking valley views. The property includes a temperature-controlled wine cellar, infinity pool, and outdoor entertainment pavilion.",
-    features: [
-        "Gourmet Chef's Kitchen",
-        "Temperature-Controlled Wine Cellar",
-        "Infinity Pool & Spa",
-        "Home Theater",
-        "Private Gym",
-        "Guest House",
-        "Outdoor Kitchen",
-        "Smart Home System",
-    ],
-    images: [
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200",
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200",
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200",
-    ],
+interface Props {
+    params: Promise<{
+        id: string
+    }>
 }
 
-export default function PropertyDetailPage() {
+export default async function PropertyDetailPage(props: Props) {
+    const params = await props.params;
+    const property = properties.find((p) => p.id === parseInt(params.id))
+
+    if (!property) {
+        notFound()
+    }
+
     return (
         <div className="min-h-screen">
             <Navbar />
@@ -65,7 +51,7 @@ export default function PropertyDetailPage() {
                             />
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            {property.images.slice(1).map((image, i) => (
+                            {property.images.slice(1, 3).map((image, i) => (
                                 <div key={i} className="relative aspect-[4/3]">
                                     <Image src={image} alt={`View ${i + 2}`} fill className="object-cover" />
                                 </div>
